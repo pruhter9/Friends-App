@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>Wolfpack</title>
+	<style type="text/css">
+		html
+		{
+			font-family: sans-serif;
+			background-color: mintcream;
+		}
+		div.container
+		{
+			width: 70%;
+			margin: 0 auto;
+		}
+		h1
+		{
+			color: orangered;
+		}
+		a.green
+		{
+			color: white;
+			background-color: seagreen;
+			text-decoration: none;
+			padding: 8px 12px;
+			float: right;
+			border-radius: 4px;
+		}
+		a
+		{
+			text-decoration: none;
+			color: royalblue;
+		}
+		table
+		{
+			width: 100%;
+			margin-bottom: 30px;
+			border: 1px solid silver;
+			border-spacing: 0rem;
+		}
+		table td
+		{
+			width: 19%;
+			border: 1px solid silver;
+			padding: 2px 10px;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// this triggers the connection event in our server!
+			var socket = io.connect();
+			// we'll write all the socket stuff after this line
+		})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Wolf Pack</h1>
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Age</th>
+					<th>Status</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+<%
+if(wolves) {
+	for(var x in wolves) {
+%>
+				<tr>
+					<td><%= wolves[x]._id %></td>
+					<td><%= wolves[x].name %></td>
+					<td><%= wolves[x].age %></td>
+					<td><%= wolves[x].status %></td>
+					<td>
+						<a href="/wolves/<%= wolves[x]._id %>">info</a>
+						<a href="/wolves/edit/<%= wolves[x]._id %>">edit</a>
+					</td>
+				</tr>
+<%
+}}
+%>
+			</tbody>
+		</table>
+		<a class="green" href="/wolves">Add a new wolf</a>
+	</div>
+</body>
+</html>

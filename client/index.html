@@ -1,0 +1,35 @@
+<html ng-app="friends-app">
+<head>
+  <title>Friends App</title>
+  <!-- require angular -->
+ <!--
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular-route.min.js"></script>
+-->
+	<script type="text/javascript" src="./javascripts/angular/angular.min.js"></script>
+	<script type="text/javascript" src="./javascripts/angular/angular-route.min.js"></script>
+  <script type="text/javascript" src="./javascripts/initialize.js"></script>
+  <!-- Friends controller and factory -->
+  <script type="text/javascript" src="./javascripts/controllers/friends.js"></script>
+  <script type="text/javascript" src="./javascripts/factories/friend.js"></script>
+  <link rel="stylesheet" type="text/css" href="./styling/style.css">
+</head>
+<body ng-controller="FriendsController as fC">
+	<div class="container">
+	  <h1>Friends</h1>
+	  <input type="text" ng-model="filter_name" placeholder="filter">
+	  <p>{{filter_name}}</p>
+	  <ul>
+			<li ng-repeat="friend in fC.friends | filter: filter_name">
+			  <a href="#" ng-click="fC.getFriend(friend)"><span ng-bind="friend.name"></span></a>
+			</li>
+	  </ul>
+	  <h1>Add a Friend</h1>
+	  <!-- objects and properties nothing scary -->
+	  <input type="text" ng-model="fC.new_friend.name" placeholder="name">
+	  <input type="text" ng-model="fC.new_friend.age" placeholder="age">
+	  <!-- addfriend() is a method we are going to make in the angular controller -->
+	  <input type="submit" ng-click="fC.addfriend()">
+	 </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+var friends_app = angular.module('friends-app', ['ngRoute']);

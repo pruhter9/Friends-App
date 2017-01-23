@@ -1,0 +1,113 @@
+<html>
+<head>
+	<title>Add a Wolf</title>
+	<style type="text/css">
+		html
+		{
+			font-family: sans-serif;
+		}
+		div.container
+		{
+			width: 70%;
+			margin: 0 auto;
+		}
+		div.form-group
+		{
+			margin-bottom: 15px;
+		}
+		div.label
+		{
+			display: inline-block;
+			width: 20%;
+		}
+		div.input
+		{
+			display: inline-block;
+			width: 78%
+		}
+		input
+		{
+			width: 100%;
+			padding: 3px;
+			line-height: 1.5em;
+			font-size: 1em;
+		}
+		h1
+		{
+			color: orangered;
+			display: inline-block;
+		}
+		a
+		{
+			color: white;
+			background-color: gray;
+			text-decoration: none;
+			padding: 8px 12px;
+			float: right;
+			border-radius: 4px;
+		}
+		button
+		{
+			color: white;
+			background-color: seagreen;
+			text-decoration: none;
+			padding: 8px 12px;
+			float: right;
+			border: none;
+			border-radius: 4px;
+			font-size: 1em;
+		}
+		select
+		{
+			width: 20%;
+			border-radius: 0px;
+			font-size: 1em;
+		}
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// this triggers the connection event in our server!
+			var socket = io.connect();
+			// we'll write all the socket stuff after this line
+		})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<h1>Add a wolf</h1>
+		<a href="/">Return to the pack</a>
+		<form action="/wolves" method="post">
+			<div class="form-group">
+				<div class="label">
+					<label>Name</label>
+				</div>
+				<div class ="input">
+					<input type="text" name="name">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="label">
+					<label>Age</label>
+				</div>
+				<div class ="input">
+					<input type="text" name="age">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="label">
+					<label>Status</label>
+				</div>
+				<div class ="input">
+					<select name="status">
+						<option value="member">member</option>
+						<option value="leader">leader</option>
+					</select>
+				</div>
+			</div>
+			<button>Add</button>
+		</form>
+	</div>
+</body>
+</html>
